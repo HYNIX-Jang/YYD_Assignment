@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Home">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$APPLICATION_HOME_DIR$/jdk/Contents/Home" />
+    </SOURCES>
+  </library>
+</component>
