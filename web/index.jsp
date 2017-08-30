@@ -2,9 +2,7 @@
 <%@ page import="util.crawler.MatomeCrawler" %>
 <%@ page import="util.mysql.DataVO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="util.crawler.Weather" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="util.crawler.MatomeCrawler" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -30,7 +28,6 @@
 //    } catch (SQLException e) {
 //        e.printStackTrace();
 //    }
-    matomeCrawler.updateNewsTable();
 
     List<DataVO> matome = matomeCrawler.getMatomeList();
     //     JSTLで matomeを使用
@@ -75,19 +72,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <c:forEach items="${matome}" var="data" begin="0" end="29" varStatus="num">
-                <td>${num.count}</td>
-                <td onclick="location.href='${data.link}'">
-                    <b>${data.title}</b>
-                </td>
-                <td>
-                    <fmt:parseDate value="${data.pubDate}" var="parseDate" pattern="yyyy-MM-dd"/>
-                    <fmt:setLocale value="ja_JP"/>
-                    <fmt:formatDate pattern="yyyy年 MM月 dd日 E曜日"
-                                    value="${parseDate}"/>
-                </td>
-            </tr>
+            <c:forEach items="${matome}" var="data" begin="0" end="29" varStatus="num">
+                <tr>
+                    <td>${num.count}</td>
+                    <td onclick="location.href='${data.link}'">
+                        <b>${data.title}</b>
+                    </td>
+                    <td>
+                        <fmt:parseDate value="${data.pubDate}" var="parseDate" pattern="yyyy-MM-dd"/>
+                        <fmt:setLocale value="ja_JP"/>
+                        <fmt:formatDate pattern="yyyy年 MM月 dd日 E曜日"
+                                        value="${parseDate}"/>
+                    </td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
